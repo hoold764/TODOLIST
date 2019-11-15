@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TO DO LIST</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="todolist">
+        <div class="todolist-add">
+            <input type="text" placeholder="请输入" v-model="text" @keydown.enter="addtodolist">
+            <input type="button" value="添加" @click="addtodolist">
+        </div>
+        <div class="todolist-tishi" v-show="todolist.length==0">您还未添加项目！</div>
+        <transition-group name="list-complete" tag="ul">
+            <li v-for="(item,index) in todolist" class="list" :key="item" ref="hot">
+                {{index+1}}.{{item}}
+                <input type="button" value="删除" @click="deltodolist(index)" class="del">
+                <input type="button" value="完成" class="finish" @click="finishtodolist(index)">
+            </li>
+        </transition-group>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
